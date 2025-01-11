@@ -1,0 +1,91 @@
+1)
+ans
+
+public class StarPattern {
+    public static void main(String[] args) {
+        int n = 3; // The number of rows
+
+        for (int i = 1; i <= n; i++) {
+            // Print leading spaces
+            for (int j = i; j < n; j++) {
+                System.out.print(" ");
+            }
+
+            // Print stars and numbers
+            for (int j = 1; j <= (2 * i - 1); j++) {
+                if (j % 2 == 1) { // Odd positions: print number
+                    System.out.print(i);
+                } else { // Even positions: print star
+                    System.out.print("*");
+                }
+            }
+
+            // Move to the next line
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+
+2)
+ANS
+
+public class Main {
+    public static void main(String[] args) {
+        int[] arr = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        System.out.println("Maximum contiguous sum is " + maxSubArraySum(arr));
+    }
+
+    public static int maxSubArraySum(int[] arr) {
+        int maxSoFar = Integer.MIN_VALUE;
+        int maxEndingHere = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            maxEndingHere = maxEndingHere + arr[i];
+            if (maxSoFar < maxEndingHere) {
+                maxSoFar = maxEndingHere;
+            }
+            if (maxEndingHere < 0) {
+                maxEndingHere = 0;
+            }
+        }
+        return maxSoFar;
+    }
+}
+
+
+
+3)
+ans
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(maxOccurringChar("Hello World"));
+    }
+
+    public static char maxOccurringChar(String str) {
+        if (str == null || str.isEmpty()) {
+            throw new RuntimeException("Input string is empty");
+        }
+
+        Map<Character, Integer> charCountMap = new HashMap<>();
+        char maxOccurringChar = str.charAt(0);
+        int maxCount = 1;
+
+        for (char c : str.toCharArray()) {
+            charCountMap.put(c, charCountMap.getOrDefault(c, 0) + 1);
+            if (charCountMap.get(c) > maxCount) {
+                maxCount = charCountMap.get(c);
+                maxOccurringChar = c;
+            }
+        }
+
+        return maxOccurringChar;
+    }
+}
